@@ -46,7 +46,7 @@ echo $cmd >>evacuation.txt
 
 rm suma.txt
 
-for i in ${ficheros[*]}; do cat $i | tail -n+2 | awk -F ':' '{if ($3==0 && $4==0) {sum=0;sum+=$7;print sum}};'>>suma.txt; done
+for i in ${ficheros1[*]}; do cat $i | tail -n+2 | awk -F ':' '{if ($3==0 && $4==0) {sum=0;sum+=$7;print sum}};'>>suma.txt; done
 
 cmd=$(cat suma.txt | awk 'BEGIN{ min=2**63-1; max=0}{ if($1<min){min=$1};\
                                                                                                   if($1>max){max=$1};\
@@ -62,7 +62,7 @@ rm suma.txt
 
 for (( j= 0 ; j<=3600; j+=10))
  do
-	for i in ${ficheros[*]}; do cat $i | tail -n+3 | awk -F ':' ' $2 == $j {sum=0;sum+=$3;print sum};'>>suma.txt; done
+	for i in ${ficheros2[*]}; do cat $i | tail -n+3 | awk -F ':' ' $2 == $j {sum=0;sum+=$3;print sum};'>>suma.txt; done
 
 	cmd=$(cat suma.txt | awk 'BEGIN{ min=2**63-1; max=0}{ if($1<min){min=$1};\
                                                                                                   if($1>max){max=$1};\
